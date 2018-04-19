@@ -1,6 +1,13 @@
 package basic_algorithm
 
-func quickSort(list []int) {
+/**
+思路：
+从右到左找到第一个比head小的，交换
+从左到右找到第一个比head大的，交换
+
+注意left<right的条件
+ */
+func QuickSort(list []int) {
 	if len(list) < 2 {
 		return
 	}
@@ -26,6 +33,6 @@ func quickSort(list []int) {
 	}
 	list[left] = head
 
-	quickSort(list[0:left])
-	quickSort(list[left+1:])
+	QuickSort(list[0:left])
+	QuickSort(list[left+1:])
 }
