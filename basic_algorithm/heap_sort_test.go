@@ -10,11 +10,23 @@ import (
 	"fmt"
 )
 
+func TestInsert(t *testing.T) {
+	l := []int{5, 6, 3, 8, 1, 4, 7}
+
+	fmt.Println(l)
+	PriorityQueue(l)
+	fmt.Println(l)
+
+	l = Insert(l, 10)
+	fmt.Println(l)
+	fmt.Println(ExtractFirst(l) )
+}
+
 func TestPriorityQueue(t *testing.T) {
 	l := []int{5, 6, 3, 8, 1, 4, 7}
 	PriorityQueue(l)
 
-	for tmp:=l;; {
+	for tmp := l; ; {
 		var one int
 		tmp, one = ExtractFirst(tmp)
 		fmt.Println(tmp, one)
@@ -23,7 +35,6 @@ func TestPriorityQueue(t *testing.T) {
 		}
 	}
 }
-
 
 func TestHeapSort(t *testing.T) {
 	l := []int{5, 6, 3, 8, 1, 4, 7}
