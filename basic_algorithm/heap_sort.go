@@ -1,7 +1,7 @@
 package basic_algorithm
 
 /*
-大顶堆
+大顶堆  完全二叉树
 使得所有的子节点都小于父节点
 因此从 n/2-1这个最小的父节点开始进行调整
 parent = (son-1)/2
