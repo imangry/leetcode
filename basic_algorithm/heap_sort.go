@@ -12,7 +12,7 @@ func HeapSort(list []int) {
 	if len(list) < 2 {
 		return
 	}
-
+	//因为son最大是len(list)-1 通过parent = (son-1)/2得到parent最大是len(list)/2-1
 	for i := len(list)/2 - 1; i >= 0; i-- {
 		maxHeapify(list, i)
 	}

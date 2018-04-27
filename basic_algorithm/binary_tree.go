@@ -43,16 +43,19 @@ func RemoveTreeNode(root *TreeNode, val int) *TreeNode {
 		root.Right = RemoveTreeNode(root.Right, val)
 	} else {
 		var x *TreeNode
+		//先查左子树，找到最大的节点，替换掉当前值；再将最大节点删掉
 		if root.Left != nil {
 			for x = root.Left; x.Right != nil; x = x.Right {
 			}
 			root.Val = x.Val
 			root.Left = RemoveTreeNode(root.Left, x.Val)
+			//再查右子树，找到最小的节点，替换当前值；再将最小节点删掉
 		} else if root.Right != nil {
 			for x = root.Right; x.Left != nil; x = x.Left {
 			}
 			root.Val = x.Val
 			root.Right = RemoveTreeNode(root.Right, x.Val)
+			//当前节点没有子树，直接将当前节点置为nil
 		} else {
 			root = nil
 		}
