@@ -12,9 +12,9 @@ func longestPalindrome(s string) string {
 
 	ri, rj, max := 0, 0, 0
 	c := 0
-
+	//中心扩展法
 	for i := 0; i < len(s); i++ {
-
+		//奇数情况
 		for j := 0; j <= i && i+j < len(s); j++ {
 			if s[i-j] != s[i+j] {
 				break
@@ -26,7 +26,7 @@ func longestPalindrome(s string) string {
 				rj = i + j
 			}
 		}
-
+		//偶数情况
 		for j := 0; j <= i && i+j+1 < len(s); j++ {
 			if s[i-j] != s[i+j+1] {
 				break
@@ -38,7 +38,6 @@ func longestPalindrome(s string) string {
 				rj = i + j + 1
 			}
 		}
-
 	}
 	return s[ri : rj+1]
 }
