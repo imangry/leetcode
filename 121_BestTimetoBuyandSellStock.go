@@ -1,21 +1,5 @@
 package main
 
-func min(i, j int) int {
-	if i < j {
-		return i
-	} else {
-		return j
-	}
-}
-
-func max(i, j int) int {
-	if i > j {
-		return i
-	} else {
-		return j
-	}
-}
-
 func maxProfit(prices []int) int {
 	if len(prices) < 2 {
 		return 0
@@ -24,8 +8,12 @@ func maxProfit(prices []int) int {
 	minPrice := prices[0]
 
 	for i := 1; i < len(prices); i++ {
-		maxProfile = max(maxProfile, prices[i]-minPrice)
-		minPrice = min(minPrice, prices[i])
+		if prices[i]-minPrice > maxProfile {
+			maxProfile = prices[i] - minPrice
+		}
+		if prices[i] < minPrice {
+			minPrice = prices[i]
+		}
 	}
 	return maxProfile
 }
