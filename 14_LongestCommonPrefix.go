@@ -1,15 +1,6 @@
 package main
 
-import "fmt"
 
-func main() {
-
-	strs := []string{
-		"ab", "abc",
-	}
-	fmt.Println(longestCommonPrefix(strs))
-
-}
 
 func longestCommonPrefix(strs []string) string {
 	if strs == nil || len(strs) == 0 || len(strs[0]) == 0 {

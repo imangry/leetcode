@@ -1,10 +1,6 @@
 package main
 
-import "fmt"
 
-func main() {
-	fmt.Println(mergeSort([]int{5, 3, 2, 45, 89}))
-}
 
 
 func mergeKLists(lists []*ListNode) *ListNode {
@@ -17,9 +13,9 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	mid := len(lists) / 2
 	l1 := mergeKLists(lists[0:mid])
 	l2 := mergeKLists(lists[mid:])
-	return merge(l1, l2)
+	return merge_1(l1, l2)
 }
-func merge(l1, l2 *ListNode) *ListNode {
+func merge_1(l1, l2 *ListNode) *ListNode {
 	if l1 == nil {
 		return l2
 	}
@@ -27,10 +23,10 @@ func merge(l1, l2 *ListNode) *ListNode {
 		return l1
 	}
 	if l1.Val < l2.Val {
-		l1.Next = merge(l1.Next, l2)
+		l1.Next = merge_1(l1.Next, l2)
 		return l1
 	} else {
-		l2.Next = merge(l1, l2.Next)
+		l2.Next = merge_1(l1, l2.Next)
 		return l2
 	}
 }

@@ -1,11 +1,7 @@
 package main
 
-import "fmt"
 
-func main() {
-	s := []int{4, 5, 6, 7, 0, 1, 2}
-	fmt.Println(search(s, 0))
-}
+
 func search(nums []int, target int) int {
 
 	if len(nums) == 0 {

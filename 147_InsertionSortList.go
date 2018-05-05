@@ -7,9 +7,7 @@ package main
  *     Next *ListNode
  * }
  */
-func main() {
 
-}
 func insertionSortList(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head

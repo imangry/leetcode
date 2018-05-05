@@ -1,14 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
-func main() {
-
-	fmt.Println(reverse(123))
-}
 
 func reverse(x int) int {
 	tmp := x

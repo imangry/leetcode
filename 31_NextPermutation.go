@@ -1,14 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
 
-func main() {
-	s := []int{6, 5, 4, 2,3}
-	nextPermutation(s)
-	fmt.Println(s)
-}
 func nextPermutation(nums []int) {
 	if len(nums) < 2 {
 		return

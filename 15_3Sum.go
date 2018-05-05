@@ -1,16 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
-
-func main() {
-
-	input := []int{0, 0, 0}
-	fmt.Println(threeSum(input))
-
-}
 
 func threeSum(nums []int) [][]int {
 	sort.Ints(nums)

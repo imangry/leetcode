@@ -1,13 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
-
-func main() {
-	fmt.Println(myAtoi("   9223372036854775809"))
-}
 
 func myAtoi(str string) int {
 	if len(str) == 0 {

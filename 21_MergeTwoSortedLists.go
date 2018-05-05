@@ -1,18 +1,8 @@
 package main
 
-import "fmt"
 type ListNode struct {
 	Val  int
 	Next *ListNode
-}
-func main() {
-	l1 := &ListNode{Val: 1}
-	l2 := &ListNode{Val: 2}
-	lists := mergeTwoLists(l1, l2)
-	for lists!=nil  {
-		fmt.Println(lists.Val)
-		lists = lists.Next
-	}
 }
 
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {

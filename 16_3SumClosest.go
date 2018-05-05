@@ -2,12 +2,7 @@ package main
 
 import (
 	"sort"
-	"fmt"
 )
-
-func main() {
-	fmt.Println(threeSumClosest([]int{0, 2, 1,-3}, 0))
-}
 
 func threeSumClosest(nums []int, target int) (result int) {
 
