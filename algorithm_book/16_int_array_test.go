@@ -15,3 +15,11 @@ func TestRemoveElement(t *testing.T) {
 func TestZeroSumSubArray(t *testing.T) {
 	fmt.Println(ZeroSumSubArray([]int{2, 3, -3, 1}))
 }
+
+func TestPartitionArray(t *testing.T) {
+	fmt.Println(PartitionArray([]int{3, 2, 2, 1}, 2))
+}
+
+func TestMedian(t *testing.T) {
+	fmt.Println(Median([]int{3,4,1,2,5,6}))
+}

@@ -19,7 +19,7 @@ func RandomSample(list []int, m int) []int {
 
 	result := make([]int, m)
 
-	copy(result, list[:m+1])
+	copy(result, list[:m])
 
 	for i := 0; i < len(list); i++ {
 		k := rand.Int63n(int64(i + 1))

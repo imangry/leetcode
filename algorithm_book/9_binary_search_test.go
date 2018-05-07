@@ -6,7 +6,6 @@ import (
 )
 
 func TestLowerBound(t *testing.T) {
-	list := []int{2, 4, 6, 7}
-	fmt.Println(LowerBound(list,8))
-
+	list := []int{0, 1, 2, 3, 4, 5, 6, 7}
+	fmt.Println(LowerBound(list, 3))
 }

@@ -1,13 +1,16 @@
 package algorithm_book
 
-import "math"
+import (
+	"math"
+	"fmt"
+)
 
 /*
 1.前提是**有序的数组**
 2.跳出循环条件：left right相遇；mid命中了
 */
 
-//TODO
+//大于等于目标值的最小索引
 func LowerBound(list []int, target int) int {
 	if len(list) == 0 {
 		return -1
@@ -15,8 +18,7 @@ func LowerBound(list []int, target int) int {
 	left := -1
 	right := len(list)
 
-	for right-left > 1 {
-
+	for left+1 < right {
 		mid := (left + right) / 2
 
 		if list[mid] >= target {
@@ -24,8 +26,27 @@ func LowerBound(list []int, target int) int {
 		} else {
 			left = mid
 		}
+		fmt.Println("left", left, "right", right)
 	}
 	return left + 1
+}
+
+func UpperBound(list []int, target int) int {
+	if len(list) == 0 {
+		return -1
+	}
+	left := -1
+	right := len(list)
+
+	for left+1 < right {
+		mid := (left + right) / 2
+		if list[mid] <= target {
+			left = mid
+		} else {
+			right = mid
+		}
+	}
+	return right - 1
 }
 
 func Sqrt(val float64) float64 {
