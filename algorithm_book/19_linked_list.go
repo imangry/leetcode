@@ -75,6 +75,8 @@ type RandomListNode struct {
 	Random *RandomListNode
 }
 
+//每个节点拥有一个next，还有一个random 指针
+//求深拷贝
 //138. Copy List with Random Pointer
 func copyRandomList(head *RandomListNode) *RandomListNode {
 	if head == nil {
@@ -89,7 +91,7 @@ func copyRandomList(head *RandomListNode) *RandomListNode {
 		newNode := &RandomListNode{Label: head.Label}
 		cur.Next = newNode
 		randomMap[head] = newNode
-		newNode.Random = head.Random
+		newNode.Random = head.Random //新节点的random和旧节点的random一致
 		head = head.Next
 		cur = cur.Next
 	}
@@ -101,4 +103,68 @@ func copyRandomList(head *RandomListNode) *RandomListNode {
 		cur = cur.Next
 	}
 	return dummyNode.Next
+}
+
+type LRUNode struct {
+	Key  int
+	Val  int
+	Pre  *LRUNode
+	Next *LRUNode
+}
+
+type LRUCache struct {
+	M        map[int]*LRUNode
+	Head     *LRUNode
+	Tail     *LRUNode
+	Capacity int
+}
+
+func NewLRUCache(capacity int) LRUCache {
+	tail := &LRUNode{}
+	head := &LRUNode{
+		Pre:  nil,
+		Next: tail,
+	}
+	tail.Pre = head
+	return LRUCache{
+		M:        make(map[int]*LRUNode),
+		Head:     head,
+		Tail:     tail,
+		Capacity: capacity,
+	}
+}
+
+func (this *LRUCache) Get(key int) int {
+
+	if cur, ok := this.M[key]; ok {
+		cur.Pre.Next = cur.Next
+		cur.Next.Pre = cur.Pre
+
+		this.Tail.Pre.Next = cur
+		cur.Pre = this.Tail.Pre
+		cur.Next = this.Tail
+		this.Tail.Pre = cur
+		return cur.Val
+	}
+	return -1
+}
+
+func (this *LRUCache) Set(key, val int) {
+	if this.Get(key) != -1 {
+		this.M[key].Val = val
+		return
+	}
+
+	if len(this.M) == this.Capacity {
+		delete(this.M, this.Head.Next.Key)
+		this.Head.Next = this.Head.Next.Next
+		this.Head.Next.Pre = this.Head
+	}
+	newNode := &LRUNode{Key: key, Val: val}
+	this.M[key] = newNode
+
+	this.Tail.Pre.Next = newNode
+	newNode.Pre = this.Tail.Pre
+	newNode.Next = this.Tail
+	this.Tail.Pre = newNode
 }
