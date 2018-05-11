@@ -105,6 +105,7 @@ func PostOrderTreeStack(root *TreeNode) []int {
 	}
 	return result
 }
+
 //层次遍历二叉树
 func BinaryTreeLevelOrderTraversal(root *TreeNode) [][]int {
 	if root == nil {
@@ -130,4 +131,50 @@ func BinaryTreeLevelOrderTraversal(root *TreeNode) [][]int {
 		queue = tmp
 	}
 	return result
+}
+
+func IsBalanced(root *TreeNode) bool {
+	return -1 == maxDepth(root)
+}
+
+func maxDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	left := maxDepth(root.Left)
+	right := maxDepth(root.Right)
+
+	if left == -1 || right == -1 || abs(left-right) > 1 {
+		return -1
+	}
+	return max(left, right) + 1
+}
+
+func max(i, j int) int {
+	if i > j {
+		return i
+	} else {
+		return j
+	}
+
+}
+
+func abs(i int) int {
+	if i > 0 {
+		return i
+	}
+	return -i
+}
+
+//反转二叉树
+//水平交换
+func invertTree(root *TreeNode) *TreeNode {
+	if root == nil {
+		return root
+	}
+
+	tmp := root.Left
+	root.Left = invertTree(root.Right)
+	root.Right = invertTree(tmp)
+	return root
 }
